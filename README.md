@@ -1,2 +1,9 @@
-# med-share.api
-DBMS final project. API part
+# Med-Share ⚕️
+
+API part. Build using these ⚙️:
+
+- NodeJS
+- NestJS
+- Typescript
+- Es-Lint
+- Prettier
