@@ -781,6 +781,14 @@
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
 
+"@types/oracledb@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/oracledb/-/oracledb-5.0.0.tgz#5af5e5f2d0b093cc48e4af55d22c25fd8ee993c5"
+  integrity sha512-vEm29EggFRmZAMC5m26Lpazbixo4QP73gPXSrl9GB3q8BqQkrzNK0hSj4HjNCuqEgwWq1qGZVRBh4bVEyNaohg==
+  dependencies:
+    "@types/node" "*"
+    dotenv "^8.2.0"
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -2021,6 +2029,11 @@ domexception@^1.0.1:
   integrity sha512-raigMkn7CJNNo6Ihro1fzG7wr3fHuYVytzquZKX5n0yizGsTcYgzdIUwj1X9pK0VvjeihV+XiclP+DjwbsSKug==
   dependencies:
     webidl-conversions "^4.0.2"
+
+dotenv@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -4343,6 +4356,11 @@ ora@5.1.0:
     mute-stream "0.0.8"
     strip-ansi "^6.0.0"
     wcwidth "^1.0.1"
+
+oracledb@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/oracledb/-/oracledb-5.0.0.tgz#c357fcc1d3cd18f64ecc8270b677ee0f04b3b233"
+  integrity sha512-NLE3t6KiAkpBHA1/zgjNiKaa9Z4Nnp4PuB3d0b3Kz4C8klrIrMKfHIGUySlwqgDW588m7/2hnPxU7PH6wjBd6g==
 
 os-name@4.0.0:
   version "4.0.0"
