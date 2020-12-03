@@ -35,7 +35,8 @@ export class DatabaseService {
   public async callSelectProcedure(
     conn: oracledb.Connection,
     name: string,
-    params: oracledb.BindParameters
+    params: oracledb.BindParameters,
+    hasOut = false
   ) {
     const result = await conn.execute<any>(`begin ${name} end;`, {
       ...params,
@@ -46,6 +47,12 @@ export class DatabaseService {
     let item = null;
     while ((item = await resultSet.getRow())) arr.push(item);
     await resultSet.close();
+    if (hasOut) {
+      return {
+        ...result.outBinds,
+        result: arr,
+      };
+    }
     return arr;
   }
 }
