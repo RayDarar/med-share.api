@@ -11,6 +11,7 @@ import { AuthenticateUserDto } from "../dto/authenticate-user.dto";
 import { CreateUserDto } from "../dto/create-user.dto";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { DBError } from "oracledb";
 
 @Injectable()
 export class UsersAuthService {
@@ -19,19 +20,24 @@ export class UsersAuthService {
 
   public async addUser(userInfo: CreateUserDto) {
     return this.db.run(async (conn) => {
-      const password = await bcrypt.hash(
-        userInfo.password,
-        await bcrypt.genSalt(10)
-      );
-      const result = await this.db.callProcedure(
-        conn,
-        "user_management.register(:phone, :fullname, :password);",
-        { ...userInfo, password }
-      );
+      try {
+        const password = await bcrypt.hash(
+          userInfo.password,
+          await bcrypt.genSalt(10)
+        );
+        const result = await this.db.callProcedure(
+          conn,
+          "user_management.register(:phone, :fullname, :password);",
+          { ...userInfo, password }
+        );
 
-      await conn.commit();
-
-      return result;
+        await conn.commit();
+        return result;
+      } catch (error) {
+        const { errorNum } = error as DBError;
+        if (errorNum) throw new BadRequestException("Phone exists");
+        throw new BadRequestException(error.message);
+      }
     });
   }
 
