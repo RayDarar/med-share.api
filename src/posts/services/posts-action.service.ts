@@ -12,7 +12,7 @@ export class PostsActionService {
     return this.db.run(async (conn) => {
       const result = await this.db.callProcedure(
         conn,
-        "posts_management.add_post(:id, :title, :status, :storage, :expires, :contacts);",
+        "posts_management.add_post(:id, :title, :status, :amount, :storage, :expires, :contacts);",
         {
           ...postInfo,
           id,
