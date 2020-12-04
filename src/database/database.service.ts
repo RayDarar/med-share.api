@@ -55,4 +55,15 @@ export class DatabaseService {
     }
     return arr;
   }
+
+  public async callProcedure(
+    conn: oracledb.Connection,
+    name: string,
+    params: oracledb.BindParameters
+  ) {
+    const result = await conn.execute<any>(`begin ${name} end;`, {
+      ...params,
+    });
+    return result.outBinds;
+  }
 }
