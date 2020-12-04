@@ -50,7 +50,7 @@ export class UsersAuthService {
       );
 
       if (!user) throw new NotFoundException("User not found");
-
+      
       const result = await bcrypt.compare(userInfo.password, user.PASSWORD);
       if (!result) {
         throw new HttpException(
@@ -68,6 +68,20 @@ export class UsersAuthService {
       );
       delete user["PASSWORD"];
       return { token, user };
+    });
+  }
+
+  public async getInfo(userInfo: AuthenticateUserDto) {
+    return this.db.run(async (conn) => {
+      const [user] = await this.db.callSelectProcedure(
+        conn,
+        "user_management.authenticate(:phone, :result);",
+        { phone: userInfo.phone }
+      );
+
+      if (!user) throw new NotFoundException("User not found");
+      delete user["PASSWORD"];
+      return user;
     });
   }
 }
